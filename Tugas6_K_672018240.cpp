@@ -7,7 +7,7 @@ float xdiff = 0.0f;
 float ydiff = 0.0f;
 int z1 = 0;
 int x1 = 0;
-int y1 = 1;
+int y1 = 0;
 bool mouseDown = false;
 int is_depth;
 
@@ -54,6 +54,16 @@ void keyboard(unsigned char key, int x, int y){
     else if(key == 's' || key == 'S')z1-=2;
     else if(key == 'a' || key == 'A')x1-=2;
     else if(key == 'd' || key == 'D')x1+=2;
+    else if(key == 't' || key == 'T')y1+=2;
+    else if(key == 'g' || key == 'G')y1-=3;
+    else if(key == '5')
+        if(is_depth){
+            is_depth = 0;
+            glDisable(GL_DEPTH_TEST);
+        } else {
+            is_depth = 1;
+            glEnable(GL_DEPTH_TEST);
+        }
 }
 
 void ukuran(int lebar, int tinggi){
@@ -66,7 +76,11 @@ void ukuran(int lebar, int tinggi){
 }
 
 void display(void){
-    glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
+    if(is_depth){
+        glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
+    } else {
+        glClear(GL_COLOR_BUFFER_BIT);
+    }
     glLoadIdentity();
     gluLookAt(0.0f, 0.0f, 3.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f);
     glRotatef(xrot, 1.0f, 0.0f, 0.0f);
