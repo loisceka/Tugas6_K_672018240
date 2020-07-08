@@ -4,4 +4,7 @@ Keyboard key = 'W' untuk Masuk
                'S' untuk Keluar
                'A' untuk ke Kiri
                'D' untuk ke Kanan
+               'T' untuk naik ke Atas
+               'G' untuk turun ke Bawah
+               '5' untuk mengaktifkan depth_field(melihat tembus)
 Mouse Function = Rotate
